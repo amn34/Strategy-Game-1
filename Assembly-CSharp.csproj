@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CursorLogic.cs" />
+    <Compile Include="Assets\Scripts\DamageText.cs" />
     <Compile Include="Assets\Scripts\GameMaster.cs" />
     <Compile Include="Assets\Scripts\HoverEffect.cs" />
     <Compile Include="Assets\Scripts\Tile.cs" />

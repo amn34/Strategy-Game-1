@@ -135,7 +135,12 @@ MonoBehaviour:
   hasAttacked: 0
   attackRange: 1
   weaponIcon: {fileID: 3608458140608571898}
+  health: 5
+  attackDamage: 3
+  defenseDamage: 2
+  armor: 1
   playerNumber: 1
+  isMoving: 0
 --- !u!61 &7649992867082486695
 BoxCollider2D:
   m_ObjectHideFlags: 0

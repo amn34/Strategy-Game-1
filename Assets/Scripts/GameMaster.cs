@@ -1,15 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
+
+    public Text selfDamageText;
+    public Text enemyDamageText;
+
 
     public Unit selectedUnit;
 
     public int playerTurn = 0;
 
     public GameObject selectedUnitSquare;
+
+
+
+
 
 
     // Update is called once per frame

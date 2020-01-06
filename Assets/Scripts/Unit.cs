@@ -16,7 +16,7 @@ public class Unit : MonoBehaviour
     //how fast the unit moves between tiles (no gameplay effects)
     public float moveSpeed;
 
-    //ATTACKING 
+    //COMBAT 
 
     //whether or not the unit has attacked already
     public bool hasAttacked;
@@ -26,7 +26,15 @@ public class Unit : MonoBehaviour
     public GameObject weaponIcon;
     //list of units that this unit can attack 
     private List<Unit> enemiesInRange = new List<Unit>();
-
+    
+    //how much health the unit has 
+    public int health;
+    //how much damage the unit can deal
+    public int attackDamage;
+    //how much damage the unit deals when it is attacked
+    public int defenseDamage;
+    //how much damage the unit mitigates
+    public int armor;
 
 
     //MISC
@@ -67,7 +75,52 @@ public class Unit : MonoBehaviour
             }
 
         }
+
+        Collider2D col = Physics2D.OverlapCircle(Camera.main.ScreenToWorldPoint(Input.mousePosition), 0.15f);
+        Unit unit = col.GetComponent<Unit>();
+        if(gm.selectedUnit != null)
+        {
+            if (gm.selectedUnit.enemiesInRange.Contains(unit) && gm.selectedUnit.hasAttacked == false)
+            {
+                gm.selectedUnit.Attack(unit);
+            }
+        }
+
         
+    }
+
+
+    private void Attack(Unit enemy)
+    {
+        hasAttacked = true;
+
+        //how much damage will be inflicted to the enemy
+        int enemyDamage = attackDamage - enemy.armor;
+        //how much damge will be inflicted to the attacking unit 
+        int myDamage = enemy.defenseDamage - this.armor;
+
+        if(enemyDamage >= 1)
+        {
+            enemy.health -= enemyDamage;
+        }
+        if (myDamage >= 1)
+        {
+            this.health -= myDamage;
+        }
+
+        if(enemy.health <= 0)
+        {
+            Destroy(enemy.gameObject);
+            GetWalkableTiles();
+        }
+
+        if(this.health <= 0)
+        {
+            gm.ResetTiles();
+            Destroy(this);
+        }
+
+
     }
 
 
@@ -100,9 +153,6 @@ public class Unit : MonoBehaviour
     
     //Animates the movement of the unit 
     private IEnumerator StartMovement(Vector2 tilePos) {
-
-
-
         //sets the unit as moving
         isMoving = true;
         //removes all the attack icons 
