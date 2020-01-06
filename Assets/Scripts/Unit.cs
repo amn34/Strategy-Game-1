@@ -37,7 +37,8 @@ public class Unit : MonoBehaviour
     public int armor;
 
 
-    public int testing; 
+    public int testing;
+    public int testpart2;
 
 
     //MISC
