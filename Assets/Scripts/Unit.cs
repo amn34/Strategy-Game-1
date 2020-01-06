@@ -36,12 +36,6 @@ public class Unit : MonoBehaviour
     //how much damage the unit mitigates
     public int armor;
 
-
-    public int testing;
-    public int testpart2;
-    public int testpart3;
-
-
     //MISC
 
     //indicates which side the unit belongs to. 
