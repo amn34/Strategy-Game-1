@@ -37,6 +37,9 @@ public class Unit : MonoBehaviour
     public int armor;
 
 
+    public int testing; 
+
+
     //MISC
 
     //indicates which side the unit belongs to. 
