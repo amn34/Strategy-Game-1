@@ -9,12 +9,27 @@ public class GameMaster : MonoBehaviour
 
     public int playerTurn = 0;
 
+    public GameObject selectedUnitSquare;
+
 
     // Update is called once per frame
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) { 
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        { 
             EndTurn();
         }
+
+        if(selectedUnit != null && !selectedUnit.isMoving)
+        {
+            selectedUnitSquare.SetActive(true);
+            selectedUnitSquare.transform.position = selectedUnit.transform.position;
+        } 
+        else
+        {
+            selectedUnitSquare.SetActive(false);
+        }
+
+        
     }
 
     private void EndTurn() {

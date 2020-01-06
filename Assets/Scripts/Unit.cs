@@ -35,7 +35,8 @@ public class Unit : MonoBehaviour
     public int playerNumber;
     //game master object to have info about the game 
     private GameMaster gm;
-
+    //whether or not the unit is moving
+    public bool isMoving; 
 
     // Start is called before the first frame update
     private void Start() {
@@ -101,6 +102,9 @@ public class Unit : MonoBehaviour
     private IEnumerator StartMovement(Vector2 tilePos) {
 
 
+
+        //sets the unit as moving
+        isMoving = true;
         //removes all the attack icons 
         ResetWeaponIcon();
 
@@ -120,6 +124,8 @@ public class Unit : MonoBehaviour
 
         //after the unit moves recalculate which enemies can be attacked. 
         GetEnemies();
+        //set the unit as not moving
+        isMoving = false;
     }
 
     //Calculates which enemies are in range of being attacked 
