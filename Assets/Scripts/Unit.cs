@@ -39,6 +39,7 @@ public class Unit : MonoBehaviour
 
     public int testing;
     public int testpart2;
+    public int testpart3;
 
 
     //MISC
